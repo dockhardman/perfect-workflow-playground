@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "perfect-workflow"
+name = "prefect-workflow"
 version = "0.1.0"
 description = ""
 authors = ["Allen Chou <f1470891079@gmail.com>"]
 readme = "README.md"
-packages = [{include = "perfect_workflow"}]
+packages = [{include = "prefect_workflow"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.0,<3.9.0"
