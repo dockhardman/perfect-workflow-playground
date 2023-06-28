@@ -30,4 +30,4 @@ WORKDIR /prefect_workflow/
 COPY ./prefect_workflow /prefect_workflow
 ENV PYTHONPATH="$PYTHONPATH:/prefect_workflow"
 
-CMD ["bash", "-c", "prefect server start"]
+CMD ["bash", "-c", "prefect agent start -p $PREFECT_WORK_POOL_NAME"]

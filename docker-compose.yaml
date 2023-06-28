@@ -25,6 +25,24 @@ services:
       - prefect-postgres
     tty: true
 
+  prefect-agent:
+    image: prefect-agent:0.1.0
+    container_name: prefect-agent
+    build:
+      context: ./
+      dockerfile: Dockerfile.agent
+    environment:
+      - PREFECT_API_URL=http://prefect-service:4200/api
+      - PREFECT_WORK_POOL_NAME=default-agent-pool
+    networks:
+      - prefect-network
+    volumes:
+      - ./prefect_workflow:/prefect_workflow
+    depends_on:
+      - prefect-postgres
+      - prefect-service
+    tty: true
+
   prefect-postgres:
     image: postgres:14
     container_name: prefect-postgres
