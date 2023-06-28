@@ -12,6 +12,9 @@ pytz = "*"
 rich = "*"
 urllib3 = "1.26.16"
 prefect = "2.*"
+prefect-dask = "0.*"
+prefect-ray = "0.*"
+prefect-openai = "0.*"
 
 
 [tool.poetry.group.dev.dependencies]
