@@ -1,6 +1,8 @@
 # Custom
 data/*
 !data/.gitkeep
+pgdata/*
+!pgdata/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
