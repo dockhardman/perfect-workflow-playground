@@ -3,6 +3,8 @@ data/*
 !data/.gitkeep
 pgdata/*
 !pgdata/.gitkeep
+prefect_workflow/deployments/*
+!prefect_workflow/deployments/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
