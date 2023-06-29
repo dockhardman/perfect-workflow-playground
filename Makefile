@@ -7,7 +7,12 @@ config_set_local_api:
 	prefect config set PREFECT_API_DATABASE_CONNECTION_URL="postgresql+asyncpg://postgres:yourTopSecretPassword@prefect-postgres:5432/prefect"
 
 build_deployments:
-	prefect deployment build -n env_info -p worker-pool -o prefect_workflow/deployments/deploy-env-info.yaml prefect_workflow/flows/env_info.py:get_env_info
+	prefect deployment build \
+		-n env_info \
+		-p worker-pool \
+		--storage-block gcs/prefect-workflow \
+		-o prefect_workflow/deployments/deploy-env-info.yaml \
+		prefect_workflow/flows/env_info.py:get_env_info
 
 apply_deployments:
 	prefect deployment apply prefect_workflow/deployments/deploy-env-info.yaml
