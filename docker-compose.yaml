@@ -33,7 +33,25 @@ services:
       dockerfile: Dockerfile.agent
     environment:
       - PREFECT_API_URL=http://prefect-service:4200/api
-      - PREFECT_WORK_POOL_NAME=default-agent-pool
+      - PREFECT_WORK_POOL_NAME=worker-pool
+    networks:
+      - prefect-network
+    volumes:
+      - ./prefect_workflow:/prefect_workflow
+    depends_on:
+      - prefect-postgres
+      - prefect-service
+    tty: true
+
+  prefect-worker:
+    image: prefect-worker:0.1.0
+    container_name: prefect-worker
+    build:
+      context: ./
+      dockerfile: Dockerfile.worker
+    environment:
+      - PREFECT_API_URL=http://prefect-service:4200/api
+      - PREFECT_WORK_POOL_NAME=worker-pool
     networks:
       - prefect-network
     volumes:

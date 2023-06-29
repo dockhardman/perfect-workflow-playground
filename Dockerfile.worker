@@ -1,0 +1,33 @@
+FROM prefecthq/prefect:2-python3.8
+
+LABEL maintainer="dockhardman <f1470891079@gamil.com>"
+
+RUN apt-get update -qq && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        htop \
+        nano \
+        openssh-client \
+        vim \
+        wget && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    python -m pip install --upgrade pip
+
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python - && \
+    cd /usr/local/bin && \
+    ln -s /opt/poetry/bin/poetry && \
+    poetry config virtualenvs.create false
+
+WORKDIR /
+COPY ./pyproject.toml ./poetry.lock* /
+RUN poetry install --no-root && poetry show
+
+WORKDIR /prefect_workflow/
+
+COPY ./prefect_workflow /prefect_workflow
+ENV PYTHONPATH="$PYTHONPATH:/prefect_workflow"
+
+CMD ["bash", "-c", "prefect worker start -p $PREFECT_WORK_POOL_NAME"]
