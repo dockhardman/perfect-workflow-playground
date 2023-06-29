@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from prefect.futures import PrefectFuture
 
 
-@flow(name="Get Enviriment Information", version="0.1.0")
+@flow(name="Get Enviriment Information", version="0.1.1", persist_result=True)
 def get_env_info(*args, **kwargs) -> Dict:
     print(f"Args: {args}")
     print(f"Kwargs: {kwargs}")

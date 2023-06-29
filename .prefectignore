@@ -1,9 +1,6 @@
 # Custom
-data/*
-!data/.gitkeep
-pgdata/*
-!pgdata/.gitkeep
-tmp
+*
+!prefect_workflow
 
 # prefect artifacts
 .prefectignore

@@ -6,7 +6,7 @@ from rich import print
 import platform
 
 
-@task(name="Get PC Info", tags=["os"], version="0.1.0")
+@task(name="Get PC Info", tags=["os"], version="0.1.1", persist_result=True)
 def get_pc_info(*args, **kwargs) -> Dict:
     pc_info = {
         "System": platform.system(),
