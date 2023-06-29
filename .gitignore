@@ -5,6 +5,7 @@ pgdata/*
 !pgdata/.gitkeep
 prefect_workflow/deployments/*
 !prefect_workflow/deployments/.gitkeep
+tmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
