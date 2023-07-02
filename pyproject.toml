@@ -16,7 +16,7 @@ prefect-dask = "0.*"
 prefect-openai = "0.*"
 filelock = "3.*"
 gcsfs = "*"
-poetry = "1.*"
+pydantic = "1.*"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
